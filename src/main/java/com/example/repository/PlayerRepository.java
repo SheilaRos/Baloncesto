@@ -28,6 +28,6 @@ public interface PlayerRepository extends JpaRepository<Player, Long>{
             "AVG(player.rebounds), max(player.rebounds), min(player.rebounds) "
             + "FROM Player player "
             +"GROUP BY player.campPosition")
-    List<Object[]> AVGANDMAxANDMINTOBasketsANDAssistsANDRebounds();
+    List<Object[]> AVGANDMaxANDMinTOBasketsANDAssistsANDRebounds();
 }
 
