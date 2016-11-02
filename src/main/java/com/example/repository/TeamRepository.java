@@ -1,7 +1,7 @@
 package com.example.repository;
+import com.example.domain.Team;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- * Created by dam on 20/10/16.
- */
-public class TeamRepository {
+public interface TeamRepository extends JpaRepository<Team, Long>{
+    List<Car> findByYearOfFabGreaterThanEqual(Integer yearOfFab);
 }
