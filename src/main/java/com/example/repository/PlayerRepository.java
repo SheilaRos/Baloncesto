@@ -3,6 +3,7 @@ package com.example.repository;
 import com.example.domain.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -29,5 +30,12 @@ public interface PlayerRepository extends JpaRepository<Player, Long>{
             + "FROM Player player "
             +"GROUP BY player.campPosition")
     List<Object[]> AVGANDMaxANDMinTOBasketsANDAssistsANDRebounds();
+
+    List<Player> findByTeamNameIs(String name);
+
+    List<Player> findByTeamNameIsAndCampPositionIs(String name, String campPosition);
+
+    @Query("SELECT player.name, max(player.baskets)" + "FROM Player player " + "WHERE player.team.name = :teamName")
+    List<Object[]> namePlayer (@Param("teamName") String teamName);
 }
 

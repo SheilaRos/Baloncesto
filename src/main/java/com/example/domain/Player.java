@@ -17,20 +17,20 @@ import java.time.LocalDate;
         private Integer rebounds;
         private String campPosition;
         @ManyToOne
-        private Team owner;
+        private Team team;
 
 
     public Player() {
     }
 
-    public Player(String name, LocalDate birthday, Integer baskets, Integer assists, Integer rebounds, String campPosition, Team owner) {
+    public Player(String name, LocalDate birthday, Integer baskets, Integer assists, Integer rebounds, String campPosition, Team team) {
         this.name = name;
         this.birthday = birthday;
         this.baskets = baskets;
         this.assists = assists;
         this.rebounds = rebounds;
         this.campPosition = campPosition;
-        this.owner = owner;
+        this.team = team;
     }
 
     public long getId() {
@@ -89,12 +89,49 @@ import java.time.LocalDate;
         this.campPosition = campPosition;
     }
 
-    public Team getOwner() {
-        return owner;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setOwner(Team owner) {
-        this.owner = owner;
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    //CompareTo --> sirve para ordenar los objetos de una manera natural, se utiliza sobretodo en Treemap
+    //HashCode -> sirve para utilizar metodos de hash, convierte el objeto en un entero para así útilizarlo de una manera más rápida
+    //Equals -> sirve para saber si dos objetos son iguales
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Player player = (Player) o;
+
+        if (id != player.id) return false;
+        if (name != null ? !name.equals(player.name) : player.name != null) return false;
+        if (birthday != null ? !birthday.equals(player.birthday) : player.birthday != null) return false;
+        if (baskets != null ? !baskets.equals(player.baskets) : player.baskets != null) return false;
+        if (assists != null ? !assists.equals(player.assists) : player.assists != null) return false;
+        if (rebounds != null ? !rebounds.equals(player.rebounds) : player.rebounds != null) return false;
+        if (campPosition != null ? !campPosition.equals(player.campPosition) : player.campPosition != null)
+            return false;
+        return team != null ? team.equals(player.team) : player.team == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        result = 31 * result + (baskets != null ? baskets.hashCode() : 0);
+        result = 31 * result + (assists != null ? assists.hashCode() : 0);
+        result = 31 * result + (rebounds != null ? rebounds.hashCode() : 0);
+        result = 31 * result + (campPosition != null ? campPosition.hashCode() : 0);
+        result = 31 * result + (team != null ? team.hashCode() : 0);
+        return result;
     }
 
     @Override
@@ -107,7 +144,7 @@ import java.time.LocalDate;
                 ", assists=" + assists +
                 ", rebounds=" + rebounds +
                 ", campPosition='" + campPosition + '\'' +
-                ", owner=" + owner +
+                ", team=" + team +
                 '}';
     }
 }
