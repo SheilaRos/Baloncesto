@@ -23,14 +23,13 @@ import java.time.LocalDate;
     public Player() {
     }
 
-    public Player(String name, LocalDate birthday, Integer baskets, Integer assists, Integer rebounds, String campPosition, Team team) {
+    public Player(String name, LocalDate birthday, Integer baskets, Integer assists, Integer rebounds, String campPosition) {
         this.name = name;
         this.birthday = birthday;
         this.baskets = baskets;
         this.assists = assists;
         this.rebounds = rebounds;
         this.campPosition = campPosition;
-        this.team = team;
     }
 
     public long getId() {
