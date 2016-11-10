@@ -135,15 +135,14 @@ import java.time.LocalDate;
 
     @Override
     public String toString() {
-        return "Player{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", birthday=" + birthday +
-                ", baskets=" + baskets +
-                ", assists=" + assists +
-                ", rebounds=" + rebounds +
-                ", campPosition='" + campPosition + '\'' +
-                ", team=" + team +
-                '}';
+        return "Player:" +'\n'+
+                "id=" + id + '\n'+
+                "name='" + name + '\'' +'\n'+
+                "birthday=" + birthday +'\n'+
+                "baskets=" + baskets +'\n'+
+                "assists=" + assists +'\n'+
+                "rebounds=" + rebounds +'\n'+
+                "campPosition='" + campPosition + '\'' + '\n'+
+                "[" + team +"]"+'\n';
     }
 }

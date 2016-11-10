@@ -22,7 +22,7 @@ public class TeamService {
         teamRepository.save(team1);
         Team team2=new Team();
         team2.setName("Los Poticaros");
-        team2.setLocality("Novés");
+        team2.setLocality("Noves");
         team2.setCreationDate(LocalDate.of(2015, 11, 03));
         teamRepository.save(team2);
 

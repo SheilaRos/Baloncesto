@@ -78,12 +78,11 @@ public class Team {
 
     @Override
     public String toString() {
-        return "Team{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", locality='" + locality + '\'' +
-                ", creationDate=" + creationDate +
-                '}';
+        return "Team:" +
+                "id= " + id + '\n'+
+                "name='" + name + '\'' +'\n'+
+                "locality='" + locality + '\'' +'\n'+
+                "creationDate=" + creationDate ;
     }
 
 }

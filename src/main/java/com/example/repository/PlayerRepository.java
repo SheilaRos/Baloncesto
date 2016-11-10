@@ -23,19 +23,19 @@ public interface PlayerRepository extends JpaRepository<Player, Long>{
     @Query("SELECT player.campPosition, AVG(player.baskets), AVG(player.assists), AVG(player.rebounds) "
             + "FROM Player player "
             +"GROUP BY player.campPosition")
-    List<Object[]> AVGBasketsANDAssistsANDRebounds();
+    List<Object[]>AVGBasketsANDAssistsANDRebounds();
     //media, min y max de canastas, asistencias y rebotes agrupados por posición en el campo
     @Query("SELECT player.campPosition, AVG(player.baskets), max(player.baskets), min(player.baskets), AVG(player.assists), max(player.assists), min(player.assists), " +
             "AVG(player.rebounds), max(player.rebounds), min(player.rebounds) "
             + "FROM Player player "
             +"GROUP BY player.campPosition")
-    List<Object[]> AVGANDMaxANDMinTOBasketsANDAssistsANDRebounds();
+    List<Object[]>AVGANDMaxANDMinTOBasketsANDAssistsANDRebounds();
 
-    List<Player> findByTeamNameIs(String name);
+    List<Player>findByTeamNameIs(String name);
 
-    List<Player> findByTeamNameIsAndCampPositionIs(String name, String campPosition);
+    List<Player>findByTeamNameIsAndCampPositionIs(String name, String campPosition);
 
     @Query("SELECT player.name, max(player.baskets)" + "FROM Player player " + "WHERE player.team.name = :teamName")
-    List<Object[]> namePlayer (@Param("teamName") String teamName);
+    List<Object[]>namePlayer(@Param("teamName") String teamName);
 }
 
