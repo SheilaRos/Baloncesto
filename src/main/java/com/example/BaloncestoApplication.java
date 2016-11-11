@@ -11,6 +11,7 @@ public class BaloncestoApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(BaloncestoApplication.class, args);
+		//llamamos los tests para que los ejecute
 		context.getBean(TeamService.class).testTeam();
         context.getBean(PlayerService.class).testPlayer();
 	}

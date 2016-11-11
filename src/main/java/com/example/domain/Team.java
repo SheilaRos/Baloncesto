@@ -11,16 +11,16 @@ public class Team {
     private String name;
     private String locality;
     private LocalDate creationDate;
-
+    //constructor vacio
     public Team() {
     }
-
+    //constructor
     public Team(String name, String locality, LocalDate creationDate) {
         this.name = name;
         this.locality = locality;
         this.creationDate = creationDate;
     }
-
+    //Getter y setter
     public long getId() {
         return id;
     }
@@ -52,6 +52,10 @@ public class Team {
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
+
+    //CompareTo --> sirve para ordenar los objetos de una manera natural, se utiliza sobretodo en Treemap
+    //HashCode -> sirve para utilizar metodos de hash, convierte el objeto en un entero para así útilizarlo de una manera más rápida
+    //Equals -> sirve para saber si dos objetos son iguales
 
     @Override
     public boolean equals(Object o) {

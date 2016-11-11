@@ -21,6 +21,7 @@ public class PlayerService {
     @Autowired
     private PlayerRepository playerRepository;
     public void testPlayer(){
+        //Dar de alta a los jugadores
         Player player1 = new Player("Leopoldo", LocalDate.of(1992, 12, 05), 8, 5, 2, "alero");
         Player player2 = new Player("Basiliso", LocalDate.of(1991, 06, 19), 3, 1, 4, "base");
         Player player3 = new Player("Anselmo", LocalDate.of(1992, 01, 25), 8, 0, 6, "pivot");
@@ -53,22 +54,26 @@ public class PlayerService {
         player9.setTeam(rompe);
         playerRepository.save(player9);
 
-        System.out.println("The teams of Guasa is " +teamRepository.findByLocalityIs("Guasa"));
-        System.out.println("The player with the name start in Ama... is " +playerRepository.findByNameContaining("Ama"));
-        System.out.println("The players with 6 or more baskets are "+playerRepository.findByBasketsGreaterThanEqual(6));
-        System.out.println("The players between 5 or 10 assistance are "+playerRepository.findByAssistsBetween(5, 10));
-        System.out.println("The players with pivot role are "+playerRepository.findByCampPositionIs("pivot"));
-        System.out.println("The players with her birthday are before 14-05-1993 are "+playerRepository.findByBirthdayBefore(LocalDate.of(1993, 05, 14)));
 
-        System.out.println("The AVG from baskets, assists and rebounds group by role are ");
+        //Llamada de las consultas para que se muestren
+        System.out.println("-->The teams of Guasa is " +teamRepository.findByLocalityIs("Guasa"));
+        System.out.println("-->The player with the name start in Ama... is " +playerRepository.findByNameContaining("Ama"));
+        System.out.println("-->The players with 6 or more baskets are "+playerRepository.findByBasketsGreaterThanEqual(6));
+        System.out.println("-->The players between 5 or 10 assistance are "+playerRepository.findByAssistsBetween(5, 10));
+        System.out.println("-->The players with pivot role are "+playerRepository.findByCampPositionIs("pivot"));
+        System.out.println("-->The players with her birthday are before 14-05-1993 are "+playerRepository.findByBirthdayBefore(LocalDate.of(1993, 05, 14)));
+
+        System.out.println("-->The AVG from baskets, assists and rebounds group by role are ");
         AVGBasketsANDAssistsANDRebounds(playerRepository.AVGBasketsANDAssistsANDRebounds());
-        System.out.println("The AVG, Max. and Min. from baskets, assists and rebounds group by role are ");
+        System.out.println("-->The AVG, Max. and Min. from baskets, assists and rebounds group by role are ");
         AVGANDMaxANDMinTOBasketsANDAssistsANDRebounds(playerRepository.AVGANDMaxANDMinTOBasketsANDAssistsANDRebounds());
-        System.out.println("The players in Las Rompe Lentejuelas team are "+playerRepository.findByTeamNameIs("Las Rompe Lentejuelas"));
-        System.out.println("The player in Los Tangencios and alero role is "+playerRepository.findByTeamNameIsAndCampPositionIs("Los Tangencios", "alero"));
-        System.out.println("The player that have the most baskets in Los Poticaros team is "+playerRepository.namePlayer("Los Poticaros", new PageRequest(0, 1)));
+        System.out.println("-->The players in Las Rompe Lentejuelas team are "+playerRepository.findByTeamNameIs("Las Rompe Lentejuelas"));
+        System.out.println("-->The player in Los Tangencios and alero role is "+playerRepository.findByTeamNameIsAndCampPositionIs("Los Tangencios", "alero"));
+        System.out.println("-->The player that have the most baskets in Los Poticaros team is "+playerRepository.namePlayer("Los Poticaros", new PageRequest(0, 1)));
     }
-
+    //Funciones para que se muestre bien la información de las consultas complejas,
+    // ya que al crear un objeto en el momento de la consulta no podemos crear un toString,
+    // entonces en estas funciones cogemos los parametros de esos objetos y los convertimos a string
     private void AVGBasketsANDAssistsANDRebounds(List<Object[]> statisticsList) {
         for ( Object[] statistic: statisticsList)
         {
@@ -92,14 +97,6 @@ public class PlayerService {
             System.out.println("Baskets Min = "+statistic[7]);
             System.out.println("Assists Min = "+statistic[8]);
             System.out.println("Rebounds Min = "+statistic[9]+System.lineSeparator());
-        }
-    }
-
-    private void namePlayer(List<Object[]> statisticsList) {
-        for ( Object[] statistic: statisticsList)
-        {
-
-            System.out.println("Player name = "+statistic[0]+System.lineSeparator());
         }
     }
 }

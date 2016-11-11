@@ -15,6 +15,7 @@ public class TeamService {
     @Autowired
             private TeamRepository teamRepository;
     public void testTeam(){
+        //Creamos los equipos
         Team team1=new Team();
         team1.setName("Los Tangencios");
         team1.setLocality("Guasa");

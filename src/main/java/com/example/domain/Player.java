@@ -19,10 +19,10 @@ import java.time.LocalDate;
         @ManyToOne
         private Team team;
 
-
+    //Constructor vacio
     public Player() {
     }
-
+    //constructor
     public Player(String name, LocalDate birthday, Integer baskets, Integer assists, Integer rebounds, String campPosition) {
         this.name = name;
         this.birthday = birthday;
@@ -31,7 +31,7 @@ import java.time.LocalDate;
         this.rebounds = rebounds;
         this.campPosition = campPosition;
     }
-
+    //Getters y setters
     public long getId() {
         return id;
     }

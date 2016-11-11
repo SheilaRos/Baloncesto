@@ -31,11 +31,12 @@ public interface PlayerRepository extends JpaRepository<Player, Long>{
             + "FROM Player player "
             +"GROUP BY player.campPosition")
     List<Object[]>AVGANDMaxANDMinTOBasketsANDAssistsANDRebounds();
-
+    //Busca la lista de jugadores de un equipo
     List<Player>findByTeamNameIs(String name);
-
+    //Buscar el jugador de un equipo y posición determinado
     List<Player>findByTeamNameIsAndCampPositionIs(String name, String campPosition);
-
+    //Mostrar el jugador con más canastas de un equipo determinado
+    //usamos el pageable para que nos muestre un intervalo de jugadores que indicaremos al llamar la consulta, será (0, 1) porque solo queremos el primer jugador
     @Query("SELECT player " + " FROM Player player " + "WHERE player.team.name = :teamName"+" ORDER BY player.baskets desc")
     List<Player>namePlayer(@Param("teamName") String teamName, Pageable pageable);
 }
