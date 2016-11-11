@@ -1,6 +1,7 @@
 package com.example.repository;
 
 import com.example.domain.Player;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -35,7 +36,7 @@ public interface PlayerRepository extends JpaRepository<Player, Long>{
 
     List<Player>findByTeamNameIsAndCampPositionIs(String name, String campPosition);
 
-    @Query("SELECT player.name, max(player.baskets)" + "FROM Player player " + "WHERE player.team.name = :teamName")
-    List<Object[]>namePlayer(@Param("teamName") String teamName);
+    @Query("SELECT player " + " FROM Player player " + "WHERE player.team.name = :teamName"+" ORDER BY player.baskets desc")
+    List<Player>namePlayer(@Param("teamName") String teamName, Pageable pageable);
 }
 

@@ -5,6 +5,7 @@ import com.example.domain.Team;
 import com.example.repository.PlayerRepository;
 import com.example.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -65,8 +66,7 @@ public class PlayerService {
         AVGANDMaxANDMinTOBasketsANDAssistsANDRebounds(playerRepository.AVGANDMaxANDMinTOBasketsANDAssistsANDRebounds());
         System.out.println("The players in Las Rompe Lentejuelas team are "+playerRepository.findByTeamNameIs("Las Rompe Lentejuelas"));
         System.out.println("The player in Los Tangencios and alero role is "+playerRepository.findByTeamNameIsAndCampPositionIs("Los Tangencios", "alero"));
-        System.out.println("The player that have the most baskets in Los Poticaros team is ");
-        namePlayer(playerRepository.namePlayer("Los Poticaros"));
+        System.out.println("The player that have the most baskets in Los Poticaros team is "+playerRepository.namePlayer("Los Poticaros", new PageRequest(0, 1)));
     }
 
     private void AVGBasketsANDAssistsANDRebounds(List<Object[]> statisticsList) {
@@ -99,8 +99,7 @@ public class PlayerService {
         for ( Object[] statistic: statisticsList)
         {
 
-            System.out.println("Player name = "+statistic[0]);
-            System.out.println("Baskets = "+statistic[1]+System.lineSeparator());
+            System.out.println("Player name = "+statistic[0]+System.lineSeparator());
         }
     }
 }
